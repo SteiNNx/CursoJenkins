@@ -18,5 +18,14 @@ services:
             - net
         ports:
             - 8006:8080
+    db_host:
+        container_name: db_host
+        image: mysql:5.7
+        environment:
+            - "MYSQL_ROOT_PASSWORD=1234"
+        volumes:
+            - $PWD/db_data:/var/lib/mysql
+        networks:
+            - net
 networks:
     net:
