@@ -27,5 +27,7 @@ services:
             - $PWD/db_data:/var/lib/mysql
         networks:
             - net
+        ports:
+            - 8007:8080
 networks:
     net:
