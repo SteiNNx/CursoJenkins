@@ -16,5 +16,7 @@ services:
             context: centos7
         networks:
             - net
+        ports:
+            - 8006:8080
 networks:
     net:
