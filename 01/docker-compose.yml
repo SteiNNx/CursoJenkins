@@ -4,7 +4,7 @@ services:
         container_name: jenkins
         image: jenkins/jenkins
         ports:
-            - 8001:8080
+            - 8005:8080
         volumes:
             - $PWD/jenkins_home:/var/jenkins_home
         networks:
@@ -16,7 +16,5 @@ services:
             context: centos7
         networks:
             - net
-        ports:
-            - 8002:8080
 networks:
     net:

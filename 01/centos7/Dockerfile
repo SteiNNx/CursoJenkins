@@ -14,13 +14,18 @@ RUN useradd remote_user -G root && \
     mkdir /home/remote_user/.ssh && \
     chmod 700 -R /home/remote_user/.ssh
 
-RUN echo '%root ALL=(ALL) ALL' >> /etc/sudoers
-
 COPY remote-key.pub /home/remote_user/.ssh/authorized_keys
 
-RUN chown remote_user:remote_user -R /home/remote_user && \
+RUN chown remote_user:remote_user -R /home/remote_user/.ssh && \
     chmod 600 /home/remote_user/.ssh/authorized_keys
 
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' 
+run mkdir ~/.ssh && \
+    chmod 700 -R ~/.ssh
+
+RUN echo remote-key.pub >> ~/.ssh/authorized_keys && \
+    chown -R remote_user:remote_user ~/.ssh && \
+    chmod -R go= ~/.ssh
+
+RUN rm -rf /run/nologin
 
 CMD /usr/sbin/sshd -D
