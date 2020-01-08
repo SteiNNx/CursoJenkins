@@ -25,16 +25,8 @@ RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
 
 RUN yum -y install mysql
 RUN yum -y install epel-release  
-RUN yum -y install python36 python3-virtualenv
+RUN yum -y install python3-pip
 
-RUN python3.6 -m virtualenv --python=python3.6 env && \
-    ./env/bin/python3.6 -m pip install -U pip 
-
-#RUN ./env/bin/python3.6 -m pip download --only-binary :all: --platform macosx_10_10_intel --python-version 27 --abi cp27 -v numpy==1.16.0
-
-#ENV pip = lib/python3.6/site-packages/pip/index.py
-
-#RUN pip install awscli
-
+RUN pip3 install awscli
 
 CMD /usr/sbin/sshd -D
