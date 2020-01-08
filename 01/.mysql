@@ -1,0 +1,9 @@
+-- en contenedor db
+create database testdb;
+use testdb;
+
+create table info (name varchar(20),apellido varchar(20),edad int(2));
+insert info (name,apellido,edad) values('ricardo','gonzales',21);
+
+show tables;
+select * from info;

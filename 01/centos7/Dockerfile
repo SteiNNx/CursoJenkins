@@ -25,7 +25,8 @@ RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
 
 RUN yum -y install mysql
 RUN yum -y install epel-release  
-RUN yum -y install python3-pip
+RUN yum -y install python3-pip && \
+    pip3 install --upgrade pip
 
 RUN pip3 install awscli
 
